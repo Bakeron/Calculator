@@ -1,3 +1,5 @@
+"use strict";
+
 function calculate(x) {
   var multiply, divide, addSecond, odejmij, 
       add, substract, result1, result2, resultTemp,
@@ -11,8 +13,8 @@ function calculate(x) {
     var resultSort;
     if (a == -1 && b != -1) resultSort = b;
     else if (a != -1 && b == -1) resultSort = a;
-    else if (a>b) resultSort = b;
-    else if (a<b) resultSort = a;
+    else if (a > b) resultSort = b;
+    else if (a < b) resultSort = a;
     else resultSort = 'error!';
     return resultSort;
   }
@@ -32,6 +34,11 @@ function calculate(x) {
         table[0] += table[1];
         table[0] = Number(table[0]);
         table.splice(1,1);
+      }
+      else if (table[1] = '.') {
+        table[0] = table[0] + table[1] + table[2];
+        table[0] = Number(table[0]);
+        table.splice(1,2);
       }
     }
     if (table[1] == '+' || table[1] == '-' || table[2] == '+' || table[2] == '-' || table.length == 1) {

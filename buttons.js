@@ -1,3 +1,5 @@
+"use strict";
+
 var buttons = document.getElementById('buttons'),
     view = document.getElementById('view'),
     result = 0,
@@ -12,7 +14,7 @@ buttons.addEventListener('click', function (event) {
   if (value == 'result') {
     result = view.innerHTML;
     final_result = calculate(result);
-    view.innerHTML += ('=' + final_result);
+    view.innerHTML += (' = ' + final_result);
   }
   else if (value == 'on') {
     view.innerHTML = 0;
