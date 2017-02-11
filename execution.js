@@ -1,13 +1,21 @@
+/*
+  Enable strict mode.
+ */
 "use strict";
 
-function calculate(x) {
+/**
+ * [calculate Receives data of which generates a result.]
+ * @param  {string} string - A string calculations.
+ * @return {number} result - Generated result.
+ */
+function calculate(string) {
   var multiply, divide, addSecond, odejmij, 
       add, substract, result1, result2, resultTemp,
       tableTemp = [],
       table = [],
       resultFirst = 0,
       resultSecond = 0,
-      table = x.split("");
+      table = string.split("");
 
   function searchLower(a, b) {
     var resultSort;
@@ -19,28 +27,26 @@ function calculate(x) {
     return resultSort;
   }
 
+  /**
+   * Generates the appropriate number of string.
+   */
   for (var i = 0; i < table.length; i++) {
     if (!isNaN(table[i]) && !isNaN(table[i+1])) {
       table[i] = table[i] + table[i+1];
       table.splice(i+1, 1);
     }
     if (!isNaN(table[i])) table[i] = Number(table[i]);
+    if (table[i+1] == '.') {
+      table[i] = table[i] + table[i+1] + table[i+2];
+      table[i] = Number(table[i]);
+      table.splice(i+1,2);
+    }
   }
 
   while (table.length != 0) {
-    if (table.length > 1) {
-      if (table[0] == '+') table.splice(0,1);
-      else if (table[0] == '-') {
-        table[0] += table[1];
-        table[0] = Number(table[0]);
-        table.splice(1,1);
-      }
-      else if (table[1] = '.') {
-        table[0] = table[0] + table[1] + table[2];
-        table[0] = Number(table[0]);
-        table.splice(1,2);
-      }
-    }
+    /**
+     * Gets same signs of addition and subtraction calculations.
+     */
     if (table[1] == '+' || table[1] == '-' || table[2] == '+' || table[2] == '-' || table.length == 1) {
       if (table[3] == '*' || table[3] == '/') {
         resultTemp = table[0];
@@ -71,6 +77,9 @@ function calculate(x) {
       }
       resultFirst += resultTemp;
     }
+    /**
+     * Gets same signs of multiplication and division to calculate because of the priority of calculations.
+     */
     else if (table[1] == '*' || table[1] == '/' || table[2] == '*' || table[2] == '/') {
       multiply = table.indexOf('*');
       divide = table.indexOf('/');
