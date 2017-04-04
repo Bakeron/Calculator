@@ -51,9 +51,7 @@ body {
           width: 40px;
           padding: 0;
           &[value="on"] { background-color: #FFA500; }
-          &[value="+"] { height: 50px; }
-          &[value="*"] { height: 19px; }
-        }
+          &[value="+"] { height: 50px; }        }
         b#arrow {
           position: absolute;
           left: -18px;
