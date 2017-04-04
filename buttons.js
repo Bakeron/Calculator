@@ -40,4 +40,14 @@ buttons.addEventListener('click', function (event) {
       view.innerHTML = value;
     else view.innerHTML += value;
   }
+
 });
+
+/*
+  Insert an info arrow that tells you how to turn on the calculator
+ */
+var turn_on = buttons.querySelector('[value="on"]');
+var arrow = document.createElement('b');
+arrow.setAttribute('id', 'arrow');
+turn_on.parentNode.style.position = "relative";
+turn_on.parentNode.appendChild(arrow);
